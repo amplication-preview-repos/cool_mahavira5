@@ -1,0 +1,30 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model OndcItem {
+  availableStock Int?
+  category       String?
+  createdAt      DateTime @default(now())
+  description    String?
+  id             String   @id @default(cuid())
+  name           String?
+  price          Float?
+  updatedAt      DateTime @updatedAt
+}
+
+model ShopifyItem {
+  bodyHtml          String?
+  createdAt         DateTime @default(now())
+  id                String   @id @default(cuid())
+  inventoryQuantity Int?
+  price             Float?
+  productType       String?
+  title             String?
+  updatedAt         DateTime @updatedAt
+}
